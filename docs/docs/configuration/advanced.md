@@ -115,7 +115,27 @@ Frigate currently includes go2rtc v1.2.0, there may be certain cases where you w
 
 To do this:
 
-1. Download the go2rtc build to the /config folder.
-2. Rename the build to `go2rtc`.
-3. Give `go2rtc` execute permission.
-4. Restart Frigate and the custom version will be used, you can verify by checking go2rtc logs.
+Steps for getting newer version of go2rtc
+
+Go to 
+https://github.com/AlexxIT/go2rtc/releases
+
+Download 
+go2rtc_linux_amd64
+
+Rename it to 
+go2rtc
+
+Go to the Frigate container directory and paste into /frigate/config
+
+Make the file executable
+chmod +x go2rtc
+
+Edit your docker-compose file to add go2rtc as a mount point
+
+- /LocationOfContainer/frigate/config/config.yml:/config/config.yml #This should already be in your docker compose file
+**- /LocationOfContainer/frigate/config/go2rtc:/config/go2rtc** #This is what you need to add
+
+Restart the frigate container
+
+Go to frigate > System > go2rtc dashboard (upper right hand side) > Check your version
